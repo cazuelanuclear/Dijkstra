@@ -28,7 +28,7 @@ int setCamino(vector<int> &caminos, vector<bool> &visitados){   //este subprogra
 }
 
 
-stack<int> dijkstra(vector<vector<int>> matriz, int nodo, int objetivo) {
+stack<int> dijkstra(vector<vector<int>> matriz, int nodo, int objetivo, int &dist) {
     int n = matriz.size();
 
     vector<int> caminos(n, INT_MAX);
@@ -68,13 +68,12 @@ stack<int> dijkstra(vector<vector<int>> matriz, int nodo, int objetivo) {
                 if (fila == objetivo) {
 
                     int actual = objetivo;
-
+                    dist = caminos[actual];
 
                     while (actual != -1) {
 
                         invertir.push(actual);
-
-
+                        
                         actual = anteriores[actual]; 
                     }
                     return invertir; 
@@ -157,8 +156,8 @@ int main(){
         }
     }
 
-
-    stack<int> menorCamino = dijkstra(matriz,0, objetivo);
+    int dist;
+    stack<int> menorCamino = dijkstra(matriz,0, objetivo,dist);
     cout << "El menor camino para " <<numeroALetra(objetivo, n);
     if (menorCamino.size() > 0){
         cout <<" es: \n" << endl;
@@ -171,7 +170,7 @@ int main(){
         cout << " -> " << numeroALetra(menorCamino.top(),n) << "(" << menorCamino.top() << ")" ;
         menorCamino.pop();
     }
-    cout <<"\n" << endl;
+    cout <<"\nCon una distancia de " << dist << "\n" << endl;
     } else {
         cout << " no existe (es cero)." << endl;
     }
@@ -179,4 +178,3 @@ int main(){
 
     return 0;
 }
-
