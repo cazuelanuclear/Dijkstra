@@ -129,7 +129,7 @@ vector<vector<int>> leerArchivoAMatriz(string nombreArchivo){
             string valorPos;
 
             while (getline(separador, valorPos, ',')) {
-                
+
                 fila.push_back(stoi(valorPos));  // convertir cada valor a entero según cada cajita de la matriz
             }
 
@@ -176,12 +176,12 @@ int main(){
     if (menorCamino.size() > 0){
         cout <<" es: \n" << endl;
 
-        cout << numeroALetra(menorCamino.top(),n) << "("<< menorCamino.top() <<")";
+        cout << numeroALetra(menorCamino.top(),n);
         menorCamino.pop();
 
         while (!menorCamino.empty())
     {
-        cout << " -> " << numeroALetra(menorCamino.top(),n) << "(" << menorCamino.top() << ")" ;
+        cout << " -> " << numeroALetra(menorCamino.top(),n);
         menorCamino.pop();
     }
     cout <<"\nCon una distancia de " << dist << "\n" << endl;
