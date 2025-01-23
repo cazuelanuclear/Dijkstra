@@ -5,6 +5,7 @@
 #include <sstream>
 #include <string>
 #include <stack>
+#include<climits>
 
 using namespace std;
 
@@ -170,6 +171,7 @@ int main(){
         cout << " -> " << numeroALetra(menorCamino.top(),n) << "(" << menorCamino.top() << ")" ;
         menorCamino.pop();
     }
+    cout <<"\n" << endl;
     } else {
         cout << " no existe (es cero)." << endl;
     }
