@@ -115,12 +115,21 @@ vector<vector<int>> leerArchivoAMatriz(string nombreArchivo){
         
         int n = stoi(linea); 
 
+        if (n > 26){
+            cout << "La cantidad de nodos excede el límite (max. 26)" << endl;
+            return matriz;
+        } else if (n < 0){
+            cout << "Cantidad de nodos no válida" << endl;
+            return matriz;
+        }
+
         while(getline(archivo,linea)){
             vector<int> fila;
             stringstream separador(linea);
             string valorPos;
 
             while (getline(separador, valorPos, ',')) {
+                
                 fila.push_back(stoi(valorPos));  // convertir cada valor a entero según cada cajita de la matriz
             }
 
@@ -136,6 +145,11 @@ vector<vector<int>> leerArchivoAMatriz(string nombreArchivo){
 int main(){
 
     vector<vector<int>> matriz = leerArchivoAMatriz("matriz.txt");
+
+    if (matriz.empty()){
+        return 0;
+    }
+
     int n = matriz.size(); //cant de nodos
 
     cout << "Ingrese el número de alguno de estos nodos para encontrar el camino más corto a él\n" ;
